@@ -7,9 +7,12 @@ export async function getAsteroidsHandler(
   next: NextFunction
 ) {
   try {
-    const asteroids = await findAsteroids(req.query);
+    const data = await findAsteroids(req.query);
 
-    res.json(asteroids);
+    const asteroids = Object.values(data.near_earth_objects).flat(2);
+    const asteroidsCleaned = asteroids.map(({ links, ...rest }) => rest);
+
+    res.json(asteroidsCleaned);
   } catch (err) {
     next(err);
   }
