@@ -35,6 +35,16 @@ export const asteroidsSlice = createSlice({
     clearAsteroidsError: (state) => {
       state.error = null;
     },
+    setAsteroidAsFavorite: (state, { payload }) => {
+      state.value = state.value!.map((asteroid) =>
+        asteroid.id === payload ? { ...asteroid, favorite: true } : asteroid,
+      );
+    },
+    removeAsteroidAsFavorite: (state, { payload }) => {
+      state.value = state.value!.map((asteroid) =>
+        asteroid.id === payload ? { ...asteroid, favorite: false } : asteroid,
+      );
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -52,7 +62,11 @@ export const asteroidsSlice = createSlice({
   },
 });
 
-export const { clearAsteroidsError } = asteroidsSlice.actions;
+export const {
+  clearAsteroidsError,
+  setAsteroidAsFavorite,
+  removeAsteroidAsFavorite,
+} = asteroidsSlice.actions;
 
 export const selectAsteroids = (state: RootState) => state.asteroids.value;
 export const selectIsAsteroidsLoading = (state: RootState) =>
