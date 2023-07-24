@@ -39,6 +39,10 @@ Now, you should be able to access the application by navigating to `http://local
 - Backend: Node.js, Express.js with Typescript, Mongoose.
 - Database: MongoDB.
 
+## Challenge Details
+
+This application was developed as part of a tech challenge. The challenge requirements are listed in [CHALLENGE.md](CHALLENGE.md). It demonstrates my skills in full-stack development, utilizing best practices, and focusing on code reusability.
+
 ## Notes
 
 - This application has been developed as a tech challenge to showcase my skills in full-stack development, using best practices, and focusing on code reusability.
