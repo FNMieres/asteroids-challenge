@@ -22,6 +22,7 @@ function AsteroidsList({ asteroids }: AsteroidsListProps) {
                 .kilometers_per_hour
             }
             isHazardous={asteroid.is_potentially_hazardous_asteroid}
+            isFavorite={asteroid.favorite}
             onClickFavorite={() => {}}
           />
         ))}

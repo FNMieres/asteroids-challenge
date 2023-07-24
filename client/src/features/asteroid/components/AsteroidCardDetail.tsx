@@ -37,7 +37,9 @@ function AsteroidCardDetail({
           titleTypographyProps={{ align: "center" }}
           action={
             <IconButton aria-label="add to favorites" onClick={onClickFavorite}>
-              <FavoriteIcon />
+              <FavoriteIcon
+                color={asteroid.favorite ? "secondary" : "inherit"}
+              />
             </IconButton>
           }
           subheaderTypographyProps={{

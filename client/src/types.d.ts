@@ -1,3 +1,9 @@
+declare global {
+  interface Array<T> {
+    toSorted(compareFn?: (a: T, b: T) => number): T[];
+  }
+}
+
 export interface AsteroidElement {
   id: string;
   neo_reference_id: string;
@@ -10,6 +16,7 @@ export interface AsteroidElement {
   is_sentry_object: boolean;
   designation?: string;
   orbital_data?: OrbitalData;
+  favorite: boolean;
 }
 
 export interface CloseApproachDatum {

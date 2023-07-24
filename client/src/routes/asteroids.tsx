@@ -11,13 +11,24 @@ function SearchAsteroids() {
   const { asteroids, isAsteroidsLoading, searchAsteroidsAction } =
     useAsteroids();
   const [sort, setSort] = useState(false);
+  const [showFavorites, setShowFavorites] = useState(false);
 
-  const sortedAsteroids = sort
-    ? asteroids && [...asteroids].sort((a, b) => (a.name > b.name ? 1 : -1))
-    : asteroids;
+  const sortedAsteroids =
+    sort && asteroids
+      ? asteroids.toSorted((a, b) => (a.name > b.name ? 1 : -1))
+      : asteroids;
+
+  const favoritesAsteroids =
+    showFavorites && sortedAsteroids
+      ? sortedAsteroids.filter((asteroid) => asteroid.favorite)
+      : sortedAsteroids;
 
   const handleSortAsteroids = () => {
     setSort(!sort);
+  };
+
+  const handleShowFavorites = () => {
+    setShowFavorites((prev) => !prev);
   };
 
   return (
@@ -48,15 +59,24 @@ function SearchAsteroids() {
             aria-label="sort asteroids by name"
             onClick={handleSortAsteroids}
             variant="contained"
+            sx={{ mx: 2 }}
           >
             {sort ? "Revert sort by name" : "Sort by name"}
+          </Button>
+          <Button
+            aria-label="toggle favorites"
+            onClick={handleShowFavorites}
+            variant="contained"
+            sx={{ mx: 2 }}
+          >
+            {showFavorites ? "Show all" : "Show favorites"}
           </Button>
           <AsteroidSearchForm
             isLoading={isAsteroidsLoading}
             onClickSearch={searchAsteroidsAction}
           />
         </Box>
-        <AsteroidsList asteroids={sortedAsteroids} />
+        <AsteroidsList asteroids={favoritesAsteroids} />
       </Container>
     </Box>
   );

@@ -15,6 +15,7 @@ interface AsteroidCardProps {
   diameter: number;
   velocity: string;
   isHazardous: boolean;
+  isFavorite: boolean;
   onClickFavorite: () => void;
 }
 
@@ -25,6 +26,7 @@ function AsteroidCard({
   diameter,
   velocity,
   isHazardous,
+  isFavorite,
   onClickFavorite,
 }: AsteroidCardProps) {
   return (
@@ -34,7 +36,7 @@ function AsteroidCard({
         titleTypographyProps={{ align: "center" }}
         action={
           <IconButton aria-label="add to favorites" onClick={onClickFavorite}>
-            <FavoriteIcon />
+            <FavoriteIcon color={isFavorite ? "secondary" : "inherit"} />
           </IconButton>
         }
         subheaderTypographyProps={{

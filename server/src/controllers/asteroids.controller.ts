@@ -38,10 +38,11 @@ export async function getAsteroidHandler(
 ) {
   try {
     const asteroid = await findAsteroidById(req.params.id);
+    const favorite = await findFavoritesAsteroidByValue(req.params.id);
 
     const { links, ...asteroidCleaned } = asteroid;
 
-    res.json(asteroidCleaned);
+    res.json({ ...asteroidCleaned, favorite });
   } catch (err) {
     next(err);
   }
