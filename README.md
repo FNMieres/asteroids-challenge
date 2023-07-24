@@ -25,7 +25,18 @@ docker-compose up -d
 npm install
 ```
 
-4. Run the development server for both frontend and backend:
+4. Rename the `.env.example` file to `.env` in the `server` folder and provide your NASA API key:
+
+```bash
+mv server/.env.example server/.env
+```
+
+For most use cases, the demo API key should be sufficient. However, if you wish to make more extensive queries or require higher usage limits, 
+you can obtain an API key by visiting [https://api.nasa.gov/](https://api.nasa.gov/).
+
+After you have your API key, open the `.env` file in the `server` folder using a text editor and replace `NASA_API_KEY` with your own API key.
+
+5. Run the development server for both frontend and backend:
 
 ```bash
 npm run dev
