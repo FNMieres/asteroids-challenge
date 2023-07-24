@@ -1,18 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
-import { NearEarthObject } from "../../types";
+import { AsteroidElement } from "../../types";
 import { fetchAsteroids } from "./asteroidsAPI";
 
 export interface AsteroidsState {
-  asteroids: NearEarthObject[] | null;
-  asteroidsStatus: "idle" | "loading" | "failed";
-  asteroidsError: unknown | null;
+  value: AsteroidElement[] | null;
+  status: "idle" | "loading" | "failed";
+  error: unknown | null;
 }
 
 const initialState: AsteroidsState = {
-  asteroids: null,
-  asteroidsStatus: "idle",
-  asteroidsError: null,
+  value: null,
+  status: "idle",
+  error: null,
 };
 
 interface SearchAsteroidsParams {
@@ -33,27 +33,29 @@ export const asteroidsSlice = createSlice({
   initialState,
   reducers: {
     clearAsteroidsError: (state) => {
-      state.asteroidsError = null;
+      state.error = null;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(searchAsteroids.pending, (state) => {
-        state.asteroidsStatus = "loading";
+        state.status = "loading";
       })
       .addCase(searchAsteroids.fulfilled, (state, { payload }) => {
-        state.asteroidsStatus = "idle";
-        state.asteroids = payload;
+        state.status = "idle";
+        state.value = payload;
       })
       .addCase(searchAsteroids.rejected, (state, { payload }) => {
-        state.asteroidsStatus = "failed";
-        state.asteroidsError = payload;
+        state.status = "failed";
+        state.error = payload;
       });
   },
 });
 
 export const { clearAsteroidsError } = asteroidsSlice.actions;
 
-export const selectAsteroids = (state: RootState) => state.asteroids.asteroids;
+export const selectAsteroids = (state: RootState) => state.asteroids.value;
+export const selectIsAsteroidsLoading = (state: RootState) =>
+  state.asteroids.status === "loading";
 
 export default asteroidsSlice.reducer;

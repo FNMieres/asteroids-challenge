@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <SearchAsteroids /> },
       {
-        path: "asteroids/:id",
+        path: "asteroids/:asteroidId",
         element: <AsteroidDetail />,
       },
     ],

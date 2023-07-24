@@ -6,7 +6,8 @@ import { useAsteroids } from "../features/asteroids/hooks";
 import AsteroidsList from "../features/asteroids/components/AsteroidsList";
 
 function SearchAsteroids() {
-  const { asteroids, searchAsteroidsAction } = useAsteroids();
+  const { asteroids, isAsteroidsLoading, searchAsteroidsAction } =
+    useAsteroids();
 
   return (
     <Box
@@ -16,7 +17,7 @@ function SearchAsteroids() {
         pb: 6,
       }}
     >
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Typography
           component="h1"
           variant="h2"
@@ -31,7 +32,10 @@ function SearchAsteroids() {
             my: 4,
           }}
         >
-          <AsteroidSearchForm onClickSearch={searchAsteroidsAction} />
+          <AsteroidSearchForm
+            isLoading={isAsteroidsLoading}
+            onClickSearch={searchAsteroidsAction}
+          />
         </Box>
         <AsteroidsList asteroids={asteroids} />
       </Container>

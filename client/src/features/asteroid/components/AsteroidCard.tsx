@@ -9,23 +9,23 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 interface AsteroidCardProps {
+  id: string;
   name: string;
   date: string;
   diameter: number;
   velocity: string;
   isHazardous: boolean;
   onClickFavorite: () => void;
-  onClickViewMoreDetails: () => void;
 }
 
 function AsteroidCard({
+  id,
   name,
   date,
   diameter,
   velocity,
   isHazardous,
   onClickFavorite,
-  onClickViewMoreDetails,
 }: AsteroidCardProps) {
   return (
     <Card sx={{ borderRadius: 2 }}>
@@ -62,7 +62,7 @@ function AsteroidCard({
             component="li"
             variant="subtitle1"
             align="center"
-            color={isHazardous ? "red" : "none"}
+            color={isHazardous ? "red" : "inherit"}
           >
             {isHazardous
               ? "Is potentially hazardous"
@@ -71,7 +71,7 @@ function AsteroidCard({
         </Box>
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
-        <Button onClick={onClickViewMoreDetails}>View more details</Button>
+        <Button href={`asteroids/${id}`}>View more details</Button>
       </CardActions>
     </Card>
   );

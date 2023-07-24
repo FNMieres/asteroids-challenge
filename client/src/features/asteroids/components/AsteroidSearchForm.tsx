@@ -3,14 +3,19 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DateValidationError } from "@mui/x-date-pickers/models";
+import CircularProgress from "@mui/material/CircularProgress";
 import dayjs, { Dayjs } from "dayjs";
 import { MAX_RANGE_DAYS } from "../../../constants";
 
 interface AsteroidSearchFormProps {
+  isLoading: boolean;
   onClickSearch: (startDate: string, endDate: string) => void;
 }
 
-function AsteroidSearchForm({ onClickSearch }: AsteroidSearchFormProps) {
+function AsteroidSearchForm({
+  isLoading,
+  onClickSearch,
+}: AsteroidSearchFormProps) {
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs());
   const minEndDate = startDate!.add(-MAX_RANGE_DAYS, "day");
   const maxEndDate = startDate!.add(MAX_RANGE_DAYS, "day");
@@ -51,7 +56,11 @@ function AsteroidSearchForm({ onClickSearch }: AsteroidSearchFormProps) {
         value={endDate}
       />
       <Button disabled={!!error} variant="contained" type="submit">
-        Search
+        {isLoading ? (
+          <CircularProgress color="inherit" sx={{ mx: 1 }} />
+        ) : (
+          "Search"
+        )}
       </Button>
     </Stack>
   );
