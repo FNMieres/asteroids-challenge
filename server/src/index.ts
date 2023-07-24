@@ -4,6 +4,7 @@ import cors from "cors";
 import asteroidsRouter from "./routes/asteroids.route";
 import notFoundHandler from "./middlewares/notFoundHandler";
 import errorHandler from "./middlewares/errorHandler";
+import connectDB from "./utils/connectDB";
 
 const port = process.env.PORT;
 
@@ -32,6 +33,9 @@ app.get(
 app.all("*", notFoundHandler);
 app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
-});
+(async () => {
+  await connectDB();
+  app.listen(port, () => {
+    console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+  });
+})();

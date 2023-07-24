@@ -12,10 +12,9 @@ function SearchAsteroids() {
     useAsteroids();
   const [sort, setSort] = useState(false);
 
-  const sortedAsteroids =
-    sort && asteroids
-      ? [...asteroids].sort((a, b) => (a.name > b.name ? 1 : -1))
-      : asteroids;
+  const sortedAsteroids = sort
+    ? asteroids && [...asteroids].sort((a, b) => (a.name > b.name ? 1 : -1))
+    : asteroids;
 
   const handleSortAsteroids = () => {
     setSort(!sort);
