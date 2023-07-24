@@ -25,7 +25,7 @@ docker-compose up -d
 npm install
 ```
 
-4. Rename the `.env.example` file to `.env` in the `server` folder and provide your NASA API key:
+4. Rename the `.env.example` file to `.env` in the `server` folder:
 
 ```bash
 mv server/.env.example server/.env
