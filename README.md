@@ -35,8 +35,8 @@ Now, you should be able to access the application by navigating to `http://local
 
 ## Technologies Used
 
-- Frontend: React with Typescript, Redux Toolkit, React Router, Material UI
-- Backend: Node.js, Express.js with Typescript, Mongoose
+- Frontend: React with Typescript, Redux Toolkit, React Router, Material UI.
+- Backend: Node.js, Express.js with Typescript, Mongoose.
 - Database: MongoDB.
 
 ## Notes
