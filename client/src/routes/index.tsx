@@ -1,17 +1,34 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Root from "./root";
-import SearchAsteroids from "./asteroids";
-import AsteroidDetail from "./asteroid-detail";
+
+const Root = lazy(() => import("./root"));
+const SearchAsteroids = lazy(() => import("./asteroids"));
+const AsteroidDetail = lazy(() => import("./asteroid-detail"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <Root />
+      </Suspense>
+    ),
     children: [
-      { index: true, element: <SearchAsteroids /> },
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <SearchAsteroids />
+          </Suspense>
+        ),
+      },
       {
         path: "asteroids/:asteroidId",
-        element: <AsteroidDetail />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <AsteroidDetail />
+          </Suspense>
+        ),
       },
     ],
   },
