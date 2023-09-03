@@ -1,5 +1,5 @@
 {
-  "name": "asteroid-explorer-app-server",
+  "name": "asteroids-challenge-server",
   "version": "1.0.0",
   "description": "Server application for providing information about asteroids.",
   "author": "Federico Mieres",

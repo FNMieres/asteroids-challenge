@@ -1,4 +1,4 @@
-# Asteroid Explorer App
+# Asteroids Challenge
 
 This is a small full-stack application that allows you to explore information about asteroids. It displays a list of asteroids, allows you to search by a range of dates, see detailed information about individual asteroids, and sort them by name. Additionally, there is an optional feature to add asteroids to your favorites and view a list of your favorite asteroids.
 
@@ -9,8 +9,8 @@ To run this application, follow the steps below:
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/FNMieres/asteroid-explorer-app.git
-cd asteroid-explorer-app
+git clone https://github.com/FNMieres/asteroids-explorer-app.git
+cd asteroids-explorer-app
 ```
 
 2. Start the backend and frontend services using Docker Compose:
